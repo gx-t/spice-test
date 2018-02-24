@@ -12,7 +12,7 @@ V3 3 0 AC 1
 .print op v 4 v 1 v 2
 .op
 
-.print ac v 4
+.print ac vdb 4
 .ac 100K 3Meg 50K
 
 .plot ac v 4
