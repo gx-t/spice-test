@@ -1,0 +1,29 @@
+'
+.include lib/LM741.MOD
+
+V1 1 0 15V
+V2 2 0 -15V
+XOP 3 4 1 2 5 LM741/NS
+
+R1 4 5 10K
+R2 4 0 10K
+
+R1 3 6 10K
+C1 3 0 0.01u
+C2 6 5 0.01u
+R2 6 7 10K
+
+V3 7 0 AC 1
+
+.width out=140
+.option rstray
+
+.print op v 5 v 1 v 2
+.op
+
+.print ac vdb 5
+.ac 10 3000 10
+
+.plot ac v 5
+.ac 10 3000 50
+
