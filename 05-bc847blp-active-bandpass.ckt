@@ -9,7 +9,7 @@ R2 out vcc 4.7k
 C1 base rc 1000p
 C2 out rc 1000p
 R3 rc in 100K
-V2 in 0 AC 1
+V2 in 0 AC 0.4
 
 .print op v out
 .op
@@ -21,5 +21,5 @@ V2 in 0 AC 1
 .ac 200 2100 * 1.01
 
 .plot ac vdb out
-.ac 200 2100 * 1.01
+.ac 200 2100 * 1.05
 
