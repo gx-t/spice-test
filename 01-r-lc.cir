@@ -1,0 +1,12 @@
+'
+* LC resonance
+R1 ( 1 2 )  1Meg
+L1 ( 2 0 )  0.001
+C1 ( 2 0 )  10n
+V1 ( 1 0 )  AC  1
+
+.width out=140
+.option rstray
+.plot ac v 4 v 2
+.ac 50.1k 50.5k 10
+
