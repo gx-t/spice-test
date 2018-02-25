@@ -1,0 +1,34 @@
+'
+.include lib/bc847blp.mod
+
+V1 1 0  DC  3
+Q1 1 2 3 bc847blp
+R1 1 2 100K
+R2 2 0 270K
+R3 3 0 5.1K
+
+R4 2 4 10K
+R5 4 5 10K
+C1 5 6 1u
+V2 6 0 ac 1.2v
+
+C2 2 0 0.01u
+C3 4 3 0.01u
+
+.width out=140
+.option rstray
+
+.print op v 3
+.op
+
+.print ac v 3
+.ac 10 10000 * 2
+
+.plot ac vdb 3
+.ac 10 10000 * 2
+
+*.print ac v out
+*.ac 100 3000 * 1.01
+*
+*.plot ac vdb out
+*.ac 100 3000 * 1.1
