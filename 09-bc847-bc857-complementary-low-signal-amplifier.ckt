@@ -11,14 +11,20 @@ C1 4 0 10u
 
 C2 3 5 1u
 R3 5 6 100K
-V2 6 0 ac 0.01V
+V2 6 0 ac amplitude
 
 .width out=140
 .option rstray
 
+.param amplitude=0
+
 .print op v 3 v 2 v 4
 .op
 
+.print tran v 2
+.tran 0 1m 0.01m
+
+.param amplitude=0.01V
 .print ac v 2
 .ac 10 1000000 * 2
 
