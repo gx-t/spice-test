@@ -1,0 +1,20 @@
+'
+.include lib/LM741.MOD
+
+V1 vcc 0 15V
+XOP 1 2 vcc 0 out LM741/NS
+R1 vcc 1 10K
+R2 1 0 10K
+R3 1 out 10k
+R4 vcc 2 10k
+V2 2 0 DC 7.5
+
+
+.width out=140
+.option rstray
+
+.print dc v vin v out
+.dc V2 0 15 0.1
+.dc V2 15 0 -0.1
+
+
