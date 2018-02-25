@@ -1,0 +1,24 @@
+'
+.include lib/bc847blp.mod
+.include lib/bc857blp.mod
+
+V1 1 0  DC  3
+Q1 2 3 4 bc857blp
+Q2 2 3 0 bc847blp
+R1 2 3 270K
+R2 1 4 51K
+C1 4 0 10u
+
+C2 3 5 1u
+R3 5 6 100K
+V2 6 0 ac 0.01V
+
+.width out=140
+.option rstray
+
+.print op v 3 v 2 v 4
+.op
+
+.print ac v 2
+.ac 10 1000000 * 2
+
