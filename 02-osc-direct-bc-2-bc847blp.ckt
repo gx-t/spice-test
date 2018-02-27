@@ -15,3 +15,6 @@ R2 4 0 3K
 .plot tran v 4 v 2
 .tran 1n 300n
 
+.print fourier v 4
+.fourier 1Meg 30Meg 1Meg
+
