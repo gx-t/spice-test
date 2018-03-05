@@ -3,7 +3,7 @@
 .include lib/bc857blp.mod
 .include lib/irl2505.spi
 
-V1 1 0 pulse 0 9 10u 1n 1n 10u 20u
+V1 1 0 pulse 0 9 0u 1u 1u 10u 20u
 R1 1 2 100
 XQ1 3 2 0 irl2505
 R2 3 4 100
@@ -12,7 +12,7 @@ V2 4 0 DC 5V
 .width out=140
 .option rstray
 .print tran v 1 v 3 i R2
-.tran 0 40u 0.5u
+.tran 0 40u 1u
 
 *.print fourier v 4
 *.fourier 1Meg 30Meg 1Meg
