@@ -1,5 +1,5 @@
-'
-* Salen-Key
+'SALEN-KEY 2ND ORDER LOWPASS ON OPAMP
+
 .include lib/LM741.MOD
 
 V1 1 0 15V

@@ -1,4 +1,5 @@
-'
+'COMPLEMENTARY BIPOLAR TRANSISTOR LOW SIGNAL AMPLIFIER
+
 .include lib/bc847blp.mod
 .include lib/bc857blp.mod
 

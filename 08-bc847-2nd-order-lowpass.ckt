@@ -1,5 +1,5 @@
-'
-* Salen-Key on transistor
+'SALEN-KEY 2ND ORDER LOWPASS ON TRANSISTOR
+
 .include lib/bc847blp.mod
 
 V1 1 0  DC  3
