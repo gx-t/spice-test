@@ -1,4 +1,5 @@
 '
+* Salen-Key on transistor
 .include lib/bc847blp.mod
 
 V1 1 0  DC  3
