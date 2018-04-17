@@ -15,6 +15,10 @@ R2 4 2 2.5
 .option rstray
 
 .print tran v 4 i R1 i R2 v 2
+
+.tran 10u 10.2u 5n
+.tran 20u 20.2u 5n
+
 .plot tran i R1
 
 .tran 10u 10.2u 5n
