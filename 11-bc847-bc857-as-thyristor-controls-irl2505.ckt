@@ -1,0 +1,24 @@
+'
+
+.include lib/bc847blp.mod
+.include lib/bc857blp.mod
+
+' V1 1 0  DC 5
+' Q1 2 3 4 bc857blp
+' Q2 3 2 0 bc847blp
+' R1 1 4 51K
+' R2 1 2 51K
+' R3 2 0 5.1K
+
+.width out=140
+.option rstray
+
+' .print dc v 4 v 2
+' .dc V1 5 0 -0.1
+
+V2 1 0 pulse 0 5 0 10m 10m 1u 100m
+R1 1 0 1K
+
+.plot tran v 1
+.tran 0 40m 1m
+
