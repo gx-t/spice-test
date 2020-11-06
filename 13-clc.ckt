@@ -1,0 +1,15 @@
+'
+* CLC resonance
+R1 1 2 10
+C1 2 0 470p
+L1 2 3 57.9n
+C2 3 0 47p
+R2 3 0 1k
+V1 1 0 AC  1
+
+.width out=140
+.option rstray
+.plot ac v 1 v 3
+'.print ac v 1 v 3
+.ac 88.5Meg 107.5Meg 200k
+
