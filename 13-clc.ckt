@@ -1,15 +1,17 @@
 '
-* CLC resonance
-R1 1 2 10
-C1 2 0 470p
-L1 2 3 57.9n
-C2 3 0 47p
-R2 3 0 1k
+* CLCLC chevyshev
 V1 1 0 AC  1
+R1 1 2 50
+L1 2 3 91nH
+L1 3 4 91nH
+R2 4 0 50
+C1 2 0 30p
+C2 3 0 51p
+C1 4 0 30p
 
-.width out=140
+.width out=120
 .option rstray
-.plot ac v 1 v 3
-'.print ac v 1 v 3
-.ac 88.5Meg 107.5Meg 200k
+'.plot ac v 4
+.print ac vdb 4
+.ac 88.5Meg 210Meg 200k
 
