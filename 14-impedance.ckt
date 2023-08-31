@@ -1,0 +1,39 @@
+'
+.include lib/ss9018g.mod
+
+* Impedance
+
+V1(vcc 0) DC  5
+
+V2(3 0) AC 14m
+R2(3 4) 50
+L2(4 0) 10u
+L3(5 0) 5.4u
+K1 L2 L3 0.999
+C1(5 2) 1000p
+
+Q1(1 2 0) ss9018g
+R1(1 2) 47K
+L1(1 vcc) 10u
+
+L4(6, 0) 1.4u
+K2 L1 L4 0.999
+C2(6 7) 1000p
+R3(7 0) 50
+
+.width out=120
+.option rstray
+
+'.print dc i(Q1)
+'.dc V1 0 12 0.1
+
+' .plot ac v 1
+
+'.print ac z(3) zi(3) zp(3)
+
+.print op i(Q1)
+.op
+
+.print ac v(3) v(4) v(7)
+.ac 99Meg 101Meg 1Meg
+
