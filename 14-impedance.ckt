@@ -7,19 +7,23 @@ V1(vcc 0) DC  5
 
 V2(3 0) AC 14m
 R2(3 4) 50
-L2(4 0) 10u
-L3(5 0) 5.4u
-K1 L2 L3 0.999
-C1(5 2) 1000p
+C1(4 2) 1000p
 
 Q1(1 2 0) ss9018g
 R1(1 2) 47K
-L1(1 vcc) 10u
+L1(1 vcc) 9u
+L2(6, 0) 1u
+K1 L1 L2 0.999
 
-L4(6, 0) 1.4u
-K2 L1 L4 0.999
 C2(6 7) 1000p
-R3(7 0) 50
+
+Q2(8 7 0) ss9018g
+R2(8 7) 47K
+L3(8 vcc) 9u
+L4(9, 0) 1u
+K2 L3 L4 0.999
+R3 9 0 36
+
 
 .width out=120
 .option rstray
@@ -34,6 +38,6 @@ R3(7 0) 50
 .print op i(Q1)
 .op
 
-.print ac v(3) v(4) v(7)
-.ac 99Meg 101Meg 1Meg
+.print ac v(3) v(4) v(9) i(R3)
+.ac 88Meg 108Meg 1Meg
 
