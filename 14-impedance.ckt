@@ -5,23 +5,20 @@
 
 V1(vcc 0) DC  5
 
-V2(3 0) AC 14m
+V2(3 0) sin (freq=100e6 ampl=14m) AC 14m
 R2(3 4) 50
-C1(4 2) 1000p
+C1(4 2) 270p
 
 Q1(1 2 0) ss9018g
 R1(1 2) 47K
-L1(1 vcc) 9u
-L2(6, 0) 1u
-K1 L1 L2 0.99
+L1(1, vcc) 3.3uH
 
-C2(6 7) 1000p
+C2(1 7) 270p
 
 Q2(8 7 0) ss9018g
-R2(8 7) 47K
-L3(8 vcc) 9u
-L4(9, 0) 1u
-K2 L3 L4 0.99
+R2(8 7) 27K
+L2(8 vcc) 3.3u
+C3(8, 9) 270p
 R3 9 0 36
 
 
@@ -38,6 +35,9 @@ R3 9 0 36
 .print op i(Q1)
 .op
 
-.print ac v(3) v(4) v(9) i(R3)
+.print ac v(3) v(4) v(1) v(9) p(R3)
 .ac 88Meg 108Meg 1Meg
 
+.plot tran p(R3)(-0.0025,0.0025)
+.tran 1u 2u '0.1n
+            '

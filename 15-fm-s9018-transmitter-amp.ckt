@@ -1,0 +1,49 @@
+'
+.include lib/ss9018g.mod
+
+* FM transmitter output amplifier using s9018
+
+V1(vcc 0) DC  5
+
+V2(1 0) sin (freq=100e6 ampl=14m) AC 14m
+R1(1,2) 50
+C1(2,3) 330p
+
+Q1(4,3,0) ss9018g
+R1(4,3) 47K
+L1(4,vcc) 16u
+L2(5,0) 4u
+K1(L1,L2) 0.99
+C2(5,6) 330p
+
+Q2(7,6,0) ss9018g
+R2(7,6) 47K
+C22(7,vcc) 3.3p
+L3(7,vcc) 4u
+L4(8,0) 1u
+K2(L3,L4) 0.99
+R3(8,0) 36
+
+.width out=120
+.option rstray
+
+'.print dc i(Q1)
+'.dc V1 0 12 0.1
+
+' .plot ac v 1
+
+'.print ac z(3) zi(3) zp(3)
+
+.print op i(Q1)
+.op
+
+.print ac v(1) v(4) v(8) z(2) z(4) z(8) p(R3)
+.ac 88Meg 108Meg 1Meg
+
+'.print fourier v(8)
+'.fourier 88Meg 1G 1Meg
+
+.plot tran v(8)(-1,1)
+.tran 1u 4u 0.1n
+
+
