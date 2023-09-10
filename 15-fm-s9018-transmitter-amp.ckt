@@ -16,10 +16,9 @@ C2(4,5) 27p
 
 Q2(6,5,0) ss9018g
 R3(vcc,5) 270K
-L2(6,vcc) 90n
-C3(6,7) 27p
-R4(7,0) 36
-
+L2(6,vcc) 78n
+C3(6,vcc) 27p
+R4(6,vcc) 330
 
 .width out=120
 .option rstray
@@ -27,10 +26,10 @@ R4(7,0) 36
 .print op i(Q1) i(Q2) v(4)
 .op
 
-.print ac v(7) p(R4)
+.print ac v(6) p(R4)
 .ac 88Meg 108Meg 1Meg
 
-.plot tran v(7)(-1,1)
+.plot tran v(6)(9,15)
 .tran 1u 4u 0.2n
 
 
