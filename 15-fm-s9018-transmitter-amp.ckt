@@ -3,44 +3,40 @@
 
 * FM transmitter output amplifier using s9018
 
-V1(vcc 0) DC 9
+V1(vcc 0) DC 12
 
-V2(1 0) sin (freq=100e6 ampl=14m) AC 14m
+V2(1 0) sin (freq=101.5Meg ampl=14m) AC 14m
 R1(1,2) 50
-C1(2,3) 330p
+C1(2,3) 1000p
 
 Q1(4,3,0) ss9018g
-R1(4,3) 270K
-L1(4,vcc) 36u
-L2(5,0) 1u
-K1(L1,L2) 0.99
-C2(5,6) 1000p
+R2(vcc,3) 330K
+L1(4,vcc) 120n
+C2(4,5) 27p
 
-Q2(7,6,0) ss9018g
-R2(7,6) 100K
-L2(7,vcc) 10u
-R3(7,vcc) 561.83
+Q2(6,5,0) ss9018g
+R3(vcc,5) 270K
+L2(6,vcc) 100n
+C3(6,7) 27p
+R4(7,0) 50
+
 
 .width out=120
 .option rstray
 
-'.print dc i(Q1)
-'.dc V1 0 12 0.1
-
-' .plot ac v 1
-
-'.print ac z(3) zi(3) zp(3)
-
-.print op i(Q1) i(Q2)
+.print op i(Q1) i(Q2) v(4)
 .op
 
-.print ac v(7) z(7) p(R3)
+.print ac v(7) p(R4)
 .ac 88Meg 108Meg 1Meg
+
+.plot tran v(7)(-1,1)
+.tran 1u 4u 0.2n
+
+
+
 
 '.plot fourier v(7)
 '.fourier 88Meg 1G 1Meg
-
-.plot tran v(7)(6,12)
-.tran 1u 4u 0.1n
 
 
