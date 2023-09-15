@@ -8,7 +8,7 @@ V1(vcc 0) DC 12
 
 V2(v2_out 0) sin (freq=101.5Meg ampl=14m) AC 14m
 R1(v2_out,in_50) 50
-C1(in_50,r_fb1) 1000p
+C1(in_50,r_fb1) 47p
 
 Rfb1(r_fb1,q1_b) 170
 
@@ -34,7 +34,7 @@ Rload(out, 0) 50
 .print ac v(q1_c) v(q2_c) v(out) p(Rload)
 .ac 88Meg 108Meg 1Meg
 
-.plot tran v(q1_c)(10,14) v(q2_c)(10,14)
+.plot tran v(q1_c)(10,14) v(out)(-2,2)
 .tran 1u 4u 0.2n
 
 '.plot fourier v(7)
