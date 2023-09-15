@@ -1,41 +1,42 @@
 '
+.include lib/2sc3356.mod
 .include lib/ss9018g.mod
 
-* FM transmitter output amplifier using s9018
+* FM transmitter output amplifier
 
 V1(vcc 0) DC 12
 
-V2(1 0) sin (freq=101.5Meg ampl=14m) AC 14m
-R1(1,2) 50
-C1(2,3) 1000p
+V2(v2_out 0) sin (freq=101.5Meg ampl=14m) AC 14m
+R1(v2_out,in_50) 50
+C1(in_50,r_fb1) 1000p
 
-Q1(4,3,0) ss9018g
-R2(vcc,3) 330K
-L1(4,vcc) 120n
-C2(4,5) 27p
+Rfb1(r_fb1,q1_b) 170
 
-Q2(6,5,0) ss9018g
-R3(vcc,5) 270K
-L2(6,vcc) 78n
-C3(6,vcc) 27p
-R4(6,vcc) 330
+Q1(q1_c, q1_b,0) 2SC3356
+R3(q1_c, q1_b) 270K
+L1(q1_c, vcc) 82n
+C3(q1_c, r_fb2) 27p
+
+Rfb2(r_fb2, q2_b) 170
+
+Q2(q2_c, q2_b,0) 2SC3356
+R3(q2_c, q2_b) 100K
+L2(q2_c, vcc) 82n
+C3(q2_c, out) 27p
+Rload(out, 0) 50
 
 .width out=120
 .option rstray
 
-.print op i(Q1) i(Q2) v(4)
+.print op v(q1_c) v(q2_c) i(Q1) i(Q2)
 .op
 
-.print ac v(6) p(R4)
+.print ac v(q1_c) v(q2_c) v(out) p(Rload)
 .ac 88Meg 108Meg 1Meg
 
-.plot tran v(6)(9,15)
+.plot tran v(q1_c)(10,14) v(q2_c)(10,14)
 .tran 1u 4u 0.2n
-
-
-
 
 '.plot fourier v(7)
 '.fourier 88Meg 1G 1Meg
-
 
