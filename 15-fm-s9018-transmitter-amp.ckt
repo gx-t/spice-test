@@ -1,40 +1,34 @@
 '
 .include lib/2sc3356.mod
 .include lib/ss9018g.mod
+.include lib/BFR520.MOD
 
 * FM transmitter output amplifier
 
-V1(vcc 0) DC 12
+V1(vcc 0) DC 5
 
-V2(v2_out 0) sin (freq=101.5Meg ampl=14m) AC 14m
-R1(v2_out,in_50) 50
-C1(in_50,r_fb1) 47p
+V2(1, 0) sin (freq=101.5Meg ampl=14m) AC 14m
 
-Rfb1(r_fb1,q1_b) 170
+R1(1,in) 50
+C1(in,q1_b) 330p
 
-Q1(q1_c, q1_b,0) 2SC3356
-R3(q1_c, q1_b) 270K
-L1(q1_c, vcc) 82n
-C3(q1_c, r_fb2) 27p
-
-Rfb2(r_fb2, q2_b) 170
-
-Q2(q2_c, q2_b,0) 2SC3356
-R3(q2_c, q2_b) 100K
-L2(q2_c, vcc) 82n
-C3(q2_c, out) 27p
-Rload(out, 0) 50
+Q1(q1_c,q1_b,0) BFR520
+R1(q1_c,q1_b) 47K
+L1(q1_c,vcc) 80n
+C2(q1_c,out) 47p
+C3(out,0) 68p
+Rout(out,0) 50
 
 .width out=120
 .option rstray
 
-.print op v(q1_c) v(q2_c) i(Q1) i(Q2)
+.print op i(q1)
 .op
 
-.print ac v(q1_c) v(q2_c) v(out) p(Rload)
+.print ac z(q1_b) z(out) v(out) p(Rout) v(q1_c)
 .ac 88Meg 108Meg 1Meg
 
-.plot tran v(q1_c)(10,14) v(out)(-2,2)
+.plot tran v(out)(-1,1)
 .tran 1u 4u 0.2n
 
 '.plot fourier v(7)
