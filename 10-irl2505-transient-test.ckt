@@ -11,7 +11,7 @@ V2 4 0 pulse 0 5 10u 25n 25n 10u 300u
 R2 4 2 2.5
 
 
-.width out=140
+.width out=120
 .option rstray
 
 .print tran v 4 i R1 i R2 v 2
