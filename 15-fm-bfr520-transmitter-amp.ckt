@@ -9,26 +9,31 @@ V1(vcc 0) DC 5
 
 V2(1, 0) sin (freq=101.5Meg ampl=14m) AC 14m
 
-R1(1,in) 50
-C1(in,q1_b) 330p
+R1(1,2) 50
+C1(2,4) 330p
 
-Q1(q1_c,q1_b,0) BFR520
-R1(q1_c,q1_b) 47K
-L1(q1_c,vcc) 80n
-C2(q1_c,out) 47p
-C3(out,0) 68p
-Rout(out,0) 50
+
+R2(3,vcc) 470
+Q1(3,3,0) BFR520
+C2(3,0) 1000p
+L1(3,4) 90n
+C3(3,4) 27p
+Q2(5,4,0) BFR520
+L2(5,vcc) 90n
+C4(5,vcc) 27p
+C5(5,out) 270p
+R3(out,0) 330
 
 .width out=120
 .option rstray
 
-.print op i(q1)
+.print op i(Q1) i(Q2)
 .op
 
-.print ac z(q1_b) z(out) v(out) p(Rout) v(q1_c)
+.print ac z(4) z(5) v(out) p(R3)
 .ac 88Meg 108Meg 1Meg
 
-.plot tran v(out)(-1,1)
+.plot tran v(out)(-3,3)
 .tran 1u 4u 0.2n
 
 '.plot fourier v(7)

@@ -1,13 +1,17 @@
 '
-* LC resonance
-R1 1 2 1Meg
-L1 2 0 0.001
-C1 2 0 10n
-V1 1 0 AC 1
+* Impedance
 
-.width out=140
+V2(1 0) sin (freq=100e6 ampl=1) AC 1
+Rs(1 2) 50
+
+C1(2, 0) 30p
+L1(2, 3) 82nH
+C2(3, 0) 30p
+
+Rl(3, 0) 50
+
+.width out=120
 .option rstray
-.plot ac v 1 v 2
-' .print ac v 1 v 2
-.ac 50.1k 50.5k 10
 
+.print ac vdb(3) z(3)
+.ac 88Meg 250Meg 1Meg
